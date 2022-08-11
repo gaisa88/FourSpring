@@ -1,7 +1,9 @@
 package com.fourspring.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,6 +22,10 @@ public class Address {
     @Column
     private Integer appertment;
 
+    @OneToMany(mappedBy = "address")
+    @JsonBackReference
+    List<Client> clientList;
+
     public Address(Integer katoId, String regionName, String streetPlace, Integer appertment) {
         this.id = null;
         this.katoId = katoId;
@@ -30,5 +36,11 @@ public class Address {
 
     public Address() {
 
+    }
+    @Override
+    public String toString() {// переопределение метода toString для вывода данных в json
+        return String.format(
+                "Address[id=%d, katoId=%d, regionName='%s', streetPlace='%s', appertment=%d]",
+                id, katoId, regionName, streetPlace, appertment);
     }
 }

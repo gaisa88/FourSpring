@@ -33,6 +33,7 @@ public class ClientController {
     Optional<Address> two(@PathVariable Long id) { // получаем опциональную сущность, по id
         return clientsService.searchById(id); // возвращаем сущность полученную сервисом через id
     }
+
     @PostMapping("/clients") // объявлем запрос добавление данных
     Client newClient(@RequestBody Client newClient) { // добавляем нового клиента в таблицу
         return clientsService.create(newClient); // передаем возвращенного объекта в таблицу
@@ -69,6 +70,10 @@ public class ClientController {
         branch.setAppertment(newAddress.getAppertment()); // присваеваем обновляемому объекту новое значение поля phone из получаемого объекта
         branch.setRegionName(newAddress.getRegionName()); // присваеваем обновляемому объекту новое значение поля phone из получаемого объекта
         return clientsService.create(branch); // сохраняем уже обновленный объект и возвращаем его
+    }
+    @GetMapping("/addresses/{id}")
+    Optional<Client> findBranchById(@PathVariable Long id) {
+        return clientsService.findBranchById(id);
     }
 
 }

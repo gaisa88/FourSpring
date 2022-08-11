@@ -7,6 +7,7 @@ import com.fourspring.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,10 @@ public class ClientsService{
     public Optional<Address> searchById(Long id) { // опционально возвращаем объект, для возможности работы с ним
         return branchRepository.findById(id);
     } // метод для чтения и поиска объектов по id
+
+    public Optional<Client> findBranchById(Long id) {
+        return branchRepository.findAllById();
+    }
 
 }
 
