@@ -22,8 +22,8 @@ public class Address {
     @Column
     private Integer appertment;
 
-    @OneToMany(mappedBy = "address")
     @JsonBackReference
+    @OneToMany(mappedBy = "address")
     List<Client> clientList;
 
     public Address(Integer katoId, String regionName, String streetPlace, Integer appertment) {

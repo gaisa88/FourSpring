@@ -71,8 +71,10 @@ public class ClientController {
         branch.setRegionName(newAddress.getRegionName()); // присваеваем обновляемому объекту новое значение поля phone из получаемого объекта
         return clientsService.create(branch); // сохраняем уже обновленный объект и возвращаем его
     }
+
+
     @GetMapping("/addresses/{id}")
-    Optional<Client> findBranchById(@PathVariable Long id) {
+    public Address findBranchById(@PathVariable Long id) {
         return clientsService.findBranchById(id);
     }
 

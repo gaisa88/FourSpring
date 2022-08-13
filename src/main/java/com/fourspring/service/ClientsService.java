@@ -42,8 +42,8 @@ public class ClientsService{
         return branchRepository.findById(id);
     } // метод для чтения и поиска объектов по id
 
-    public Optional<Client> findBranchById(Long id) {
-        return branchRepository.findAllById();
+    public Address findBranchById(Long id) {
+        return branchRepository.findBranchById(id);
     }
 
 }
